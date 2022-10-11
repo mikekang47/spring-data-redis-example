@@ -9,9 +9,12 @@ spring:
     password:
     url: jdbc:h2:mem:testdb
   jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
-      ddl-auto: none
+      ddl-auto: create
     show-sql: true
+
+
   cache:
     type: redis
     redis:
