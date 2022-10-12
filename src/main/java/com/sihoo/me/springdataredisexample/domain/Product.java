@@ -23,4 +23,9 @@ public class Product implements Serializable {
     private String name;
 
     private Integer price;
+
+    public void update(Product source) {
+        this.name = source.getName();
+        this.price = source.getPrice();
+    }
 }

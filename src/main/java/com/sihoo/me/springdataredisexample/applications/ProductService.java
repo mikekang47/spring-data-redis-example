@@ -1,5 +1,6 @@
 package com.sihoo.me.springdataredisexample.applications;
 
+import com.github.dozermapper.core.Mapper;
 import com.sihoo.me.springdataredisexample.domain.Product;
 import com.sihoo.me.springdataredisexample.dto.ProductData;
 import com.sihoo.me.springdataredisexample.error.UserCausedException;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class ProductService {
     private final ProductRepository productRepository;
+    private final Mapper mapper;
 
     @Cacheable(key = "#productId", value = "products")
     public Product getProduct(Long productId) {
@@ -36,8 +38,8 @@ public class ProductService {
     @CachePut(key="#productId", value="products")
     public Product updateProduct(Long productId, ProductData productData) {
         Product source = findProduct(productId);
-        Product product = ProductData.toEntity(source.getId(), productData.getPrice(), productData.getName());
-        return productRepository.save(product);
+        source.update(mapper.map(productData, Product.class));
+        return source;
     }
 
     @CacheEvict(value = "products", allEntries = true)
