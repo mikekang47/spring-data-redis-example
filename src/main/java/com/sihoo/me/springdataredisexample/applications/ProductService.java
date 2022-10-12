@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 
@@ -49,6 +50,6 @@ public class ProductService {
 
     private Product findProduct(Long productId) {
         return productRepository.findById(productId)
-                .orElseThrow(() -> new UserCausedException("Product not found. (Product Id: " + productId + ")"));
+                .orElseThrow(() -> new UserCausedException("Product not found. (Product Id: " + productId + ")", HttpStatus.NOT_FOUND));
     }
 }

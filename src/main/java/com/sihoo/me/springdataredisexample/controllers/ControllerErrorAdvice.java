@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class ControllerErrorAdvice {
     @ExceptionHandler(UserCausedException.class)
     public ResponseEntity<ErrorResponse> handleUserCausedException(UserCausedException e) {
-        return new ResponseEntity<>(new ErrorResponse(e.getMessage()), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(new ErrorResponse(e.getMessage()),e.getStatus());
     }
 
     @ExceptionHandler(Exception.class)
