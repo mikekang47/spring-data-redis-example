@@ -24,6 +24,7 @@ public class ProductService {
         return findProduct(productId);
     }
 
+    @Cacheable("products")
     public Iterable<Product> getProducts() {
         return productRepository.findAll();
     }
