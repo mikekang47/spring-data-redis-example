@@ -30,10 +30,8 @@ public class ProductService {
     }
 
     public Product createProduct(ProductData productData) {
-        Product product = Product.builder()
-                .name(productData.getName())
-                .price(productData.getPrice())
-                .build();
+        Product product = productData.toEntity();
+
         return productRepository.save(product);
     }
 
