@@ -13,11 +13,10 @@ public class ProductData {
     @Mapping("name")
     private String name;
 
-    public static Product toEntity(Long id, Integer price, String name) {
+    public Product toEntity() {
         return Product.builder()
-                .id(id)
-                .price(price)
-                .name(name)
+                .price(this.price)
+                .name(this.name)
                 .build();
     }
 }

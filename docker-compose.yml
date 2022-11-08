@@ -1,0 +1,19 @@
+version: "0.0.1"
+services:
+  redis-server:
+    image: redis
+    ports:
+      - "6379:6379"
+
+  spring-data-example:
+    image: redis-example
+    ports:
+      - "8080:8080"
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    depends_on:
+      - redis-server
+
+
+

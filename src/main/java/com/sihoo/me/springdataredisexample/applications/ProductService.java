@@ -12,6 +12,8 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 @RequiredArgsConstructor
@@ -25,15 +27,13 @@ public class ProductService {
     }
 
     @Cacheable("products")
-    public Iterable<Product> getProducts() {
+    public List<Product> getProducts() {
         return productRepository.findAll();
     }
 
     public Product createProduct(ProductData productData) {
-        Product product = Product.builder()
-                .name(productData.getName())
-                .price(productData.getPrice())
-                .build();
+        Product product = productData.toEntity();
+
         return productRepository.save(product);
     }
 
