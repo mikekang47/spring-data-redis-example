@@ -39,15 +39,15 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
   deploy:
-    - runs-on: ubuntu-latest
-      steps:
-        - name: Deploy to EB
-          uses: einaregilsson/beanstalk-deploy@ebe3476a4ce991d54336935e75e78dd9d86f9408
-          with:
-            aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-            aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-            deployment_package: docker-compose.yml
-            application_name: spring-redis-example
-            environment_name: springredisexample-env
-            version_label: redis application
-            region: ap-northeast-2
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to EB
+        uses: einaregilsson/beanstalk-deploy@ebe3476a4ce991d54336935e75e78dd9d86f9408
+        with:
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          deployment_package: docker-compose.yml
+          application_name: spring-redis-example
+          environment_name: springredisexample-env
+          version_label: redis application
+          region: ap-northeast-2
