@@ -60,5 +60,5 @@ jobs:
           deployment_package: docker-compose.yml
           application_name: spring-redis-example
           environment_name: springredisexample-env
-          version_label: redis application
+          version_label: Sample Application
           region: ap-northeast-2
