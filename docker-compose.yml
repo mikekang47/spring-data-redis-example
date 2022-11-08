@@ -5,8 +5,8 @@ services:
     ports:
       - "6379:6379"
 
-  spring-data-example:
-    image: redis-example
+  backend:
+    image: "sihookang47/spring-redis-example:latest"
     ports:
       - "80:8080"
     build:
