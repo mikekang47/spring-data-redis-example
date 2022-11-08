@@ -6,6 +6,8 @@ import com.sihoo.me.springdataredisexample.dto.ProductData;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 @RequiredArgsConstructor
@@ -19,7 +21,7 @@ public class ProductController {
     }
 
     @GetMapping
-    public Iterable<Product> list() {
+    public List<Product> list() {
         return productService.getProducts();
     }
 
