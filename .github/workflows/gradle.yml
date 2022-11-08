@@ -45,5 +45,5 @@ jobs:
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           application_name: spring-redis-example
           environment_name: spring-redis-example
-          version_label: spring-redis-example
+          version_label: Sample Application
           region: ap-northeast-2
