@@ -5,12 +5,12 @@ services:
     ports:
       - "6379:6379"
 
-  spring-data-example:
-    image: redis-example
+  backend:
+    image: "sihookang47/spring-redis-example:latest"
     ports:
-      - "8080:8080"
+      - "80:8080"
     build:
-      context: ./src
+      context: .
       dockerfile: Dockerfile
     depends_on:
       - redis-server

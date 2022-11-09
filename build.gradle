@@ -1,11 +1,22 @@
 plugins {
     id 'org.springframework.boot' version '2.7.4'
     id 'io.spring.dependency-management' version '1.0.14.RELEASE'
+    id 'com.google.cloud.tools.jib' version '3.2.1'
     id 'java'
 }
 
+jib {
+    from {
+        image = "adoptopenjdk/openjdk11"
+    }
+    to {
+        image = "sihookang47/spring-redis-example"
+        tags = ["latest"]
+    }
+}
+
 group = 'com.sihoo.me'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.1'
 sourceCompatibility = '11'
 
 configurations {
