@@ -40,5 +40,5 @@ jobs:
           deployment_package: ${{ env.EB_DEPLOYMENT_PACKAGE }}
           application_name: redis-example
           environment_name: RedisExample-env
-          version_label: ${{ steps.build-number.outputs.BUILD_NUMBER }}
+          version_label: Sample Application
           region: ap-northeast-2
